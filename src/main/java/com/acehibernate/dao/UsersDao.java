@@ -20,4 +20,5 @@ public interface UsersDao extends JpaRepository<Users, Long>, JpaSpecificationEx
 
     Users findById(long id);
 
+    Users findByUserAccount(String userAccount);
 }

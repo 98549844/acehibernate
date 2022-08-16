@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -34,6 +35,16 @@ public class UsersService {
 
     public List<Users> findAll() {
         return usersDao.findAll();
+    }
+
+    public Users findByUserAccount(String userAccount) {
+        Users user = usersDao.findByUserAccount(userAccount.toLowerCase());
+        return user;
+    }
+
+    @Transactional
+    public Users saveAndFlush(Users users) {
+        return usersDao.saveAndFlush(users);
     }
 }
 
